@@ -1,1 +1,1 @@
-# The folder "github" contains all R scripts for simulation.
+The folder "github" contains all R scripts for simulation.
