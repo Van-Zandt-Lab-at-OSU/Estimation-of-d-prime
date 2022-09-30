@@ -1,1 +1,1 @@
-# The-perils-of-using-d-
+# The folder "github" contains all R scripts for simulation.
