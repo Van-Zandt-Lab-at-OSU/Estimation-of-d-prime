@@ -10,6 +10,7 @@ sdt_simulation <- function(Nn = 20,    # number of noise trial
                            d_sd.t,      # true d' standard deviation for simulations
                            c_sd.t,       # true response bias standard deviations for simulations
                            replacement_values = c(0.5), # one or more values for the replacement method,
+                           ll_values = c(0.5),  # one value
                            replacement = 1, # 1: perform replacement; 0: don't perform
                            log_linear = 1  # 1: perform log-linear; 0: don't perform
                            ){
@@ -80,8 +81,8 @@ sdt_simulation <- function(Nn = 20,    # number of noise trial
     if(log_linear == 1){
       h.mean <- mean(accu[(Nn+1):(Nn+Ns)])
       f.mean <- mean(accu[1:Nn])
-      H <- (Ns*h.mean + 0.5)/(Ns + 1)
-      FA <- 1 - (Nn*f.mean + 0.5)/(Nn + 1)
+      H <- (Ns*h.mean + ll_values)/(Ns + 2*ll_values)
+      FA <- 1 - (Nn*f.mean + ll_values)/(Nn + 2*ll_values)
       d.ll[i] <- qnorm(H)+qnorm(1-FA)
       c.ll[i] <- -(qnorm(H)+qnorm(FA))/2
     }

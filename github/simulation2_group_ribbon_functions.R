@@ -14,6 +14,7 @@ group_simulation <- function(d_mean.t=seq(0.1,3.9,0.3), # expecting a sequence
                                          M = 20,    # number of participants in the group
                                          sim_number = 100,
                                          replacement_value=0.5, # expecting one value
+                                         ll_value=0.5,
                                          probs = c(0.025,0.1,0.25,0.5,0.75,0.9,0.975)
                                          # probs to be plotted on the ribbon plot
                                          ){
@@ -39,7 +40,8 @@ group_simulation <- function(d_mean.t=seq(0.1,3.9,0.3), # expecting a sequence
                                c_mean.t=c_mean.t,
                                d_sd.t=d_sd.t,
                                c_sd.t=c_sd.t,
-                               replacement_values=replacement_value)
+                               replacement_values=replacement_value,
+                               ll_values=ll_value)
       
       d.values.t[k,] <- result$d.t - d_mean.t[j]
       d.est.rep[k,] <- result$d.rep[1,] - d_mean.t[j]
@@ -110,7 +112,7 @@ ribbon_plots <- function(p,        # the ribbon lines
       geom_line( aes( y=ref975) , col="red" ) +
       geom_line( aes( y=ref5) , col="red" ) +
       labs( title=title,
-            y="Estimation-true difference" , x="True d'" ) +
+            y="Difference between estimation and true d'" , x="True d'" ) +
       theme(plot.title = element_text(size=10),axis.title=element_text(size=10))   
   }
   else{
@@ -122,8 +124,9 @@ ribbon_plots <- function(p,        # the ribbon lines
       geom_line( aes( y=d_sd*qnorm(0.975)/sqrt(M)) , col="green" ) +
       geom_line( aes( y=d_sd*qnorm(0.025)/sqrt(M)) , col="green" ) +
       labs( title=title,
-            y="Estimation-true difference" , x="True d'" ) +
-      theme(plot.title = element_text(size=10),axis.title=element_text(size=10))    
+            y="Difference between estimation and true d'" , x="True d'" ) +
+      theme(plot.title = element_text(size=10),axis.title=element_text(size=10)) +
+      coord_cartesian(ylim = c(-0.5,0.5)) 
   }
   return(rib_plots)
 }

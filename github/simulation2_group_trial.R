@@ -16,8 +16,7 @@ d_mean <- seq(0.1,3.9,0.3)
 c_mean <- 0
 d_sd <- 0.5
 c_sd <- 0
-Nn <- 20
-Ns <- 20
+M <- 60
 sim_number <- 1000
 replacement_value <- 0.5
 probs <- c(0.025,0.1,0.25,0.5,0.75,0.9,0.975)
@@ -28,9 +27,9 @@ result1 <- group_simulation(d_mean.t=d_mean,
                            c_mean.t=c_mean,
                            d_sd.t=d_sd,
                            c_sd.t=c_sd,
-                           Nn=Nn,
-                           Ns=Ns,
-                           M=20,
+                           Nn=20,
+                           Ns=20,
+                           M=M,
                            sim_number=sim_number,
                            replacement_value=replacement_value,
                            probs = probs)
@@ -40,8 +39,8 @@ result1 <- group_simulation(d_mean.t=d_mean,
 p1.1 <- ribbon_plots(p=result1$p.rep,
                    d_mean=d_mean,
                    d_sd=d_sd,
-                   M=20,
-                   title=paste("Rep 0.5 - Sample:",20),
+                   M=M,
+                   title=paste("Rep 0.5 - trials per condition:",20),
                    reference=0,
                    p_ref=result$p.t)
 
@@ -50,8 +49,8 @@ p1.1 <- ribbon_plots(p=result1$p.rep,
 p1.2 <- ribbon_plots(p=result1$p.ll,
                    d_mean=d_mean,
                    d_sd=d_sd,
-                   M=20,
-                   title=paste("log linear - Sample:",20),
+                   M=M,
+                   title=paste("log linear - trials per condition:",20),
                    reference=0,
                    p_ref=result$p.t)
 
@@ -60,9 +59,9 @@ result2 <- group_simulation(d_mean.t=d_mean,
                            c_mean.t=c_mean,
                            d_sd.t=d_sd,
                            c_sd.t=c_sd,
-                           Nn=Nn,
-                           Ns=Ns,
-                           M=60,
+                           Nn=50,
+                           Ns=50,
+                           M=M,
                            sim_number=sim_number,
                            replacement_value=replacement_value,
                            probs = probs)
@@ -72,8 +71,8 @@ result2 <- group_simulation(d_mean.t=d_mean,
 p2.1 <- ribbon_plots(p=result2$p.rep,
                      d_mean=d_mean,
                      d_sd=d_sd,
-                     M=60,
-                     title=paste("Rep 0.5 - Sample:",60),
+                     M=M,
+                     title=paste("Rep 0.5 - trials per condition:",50),
                      reference=0,
                      p_ref=result$p.t)
 
@@ -82,8 +81,8 @@ p2.1 <- ribbon_plots(p=result2$p.rep,
 p2.2 <- ribbon_plots(p=result2$p.ll,
                      d_mean=d_mean,
                      d_sd=d_sd,
-                     M=60,
-                     title=paste("log linear - Sample:",60),
+                     M=M,
+                     title=paste("log linear - trials per condition:",50),
                      reference=0,
                      p_ref=result$p.t)
 
@@ -93,9 +92,9 @@ result3 <- group_simulation(d_mean.t=d_mean,
                            c_mean.t=c_mean,
                            d_sd.t=d_sd,
                            c_sd.t=c_sd,
-                           Nn=Nn,
-                           Ns=Ns,
-                           M=100,
+                           Nn=100,
+                           Ns=100,
+                           M=M,
                            sim_number=sim_number,
                            replacement_value=replacement_value,
                            probs = probs)
@@ -105,8 +104,8 @@ result3 <- group_simulation(d_mean.t=d_mean,
 p3.1 <- ribbon_plots(p=result3$p.rep,
                      d_mean=d_mean,
                      d_sd=d_sd,
-                     M=100,
-                     title=paste("Rep 0.5 - Sample:",100),
+                     M=M,
+                     title=paste("Rep 0.5 - trials per condition:",100),
                      reference=0,
                      p_ref=result$p.t)
 
@@ -115,8 +114,8 @@ p3.1 <- ribbon_plots(p=result3$p.rep,
 p3.2 <- ribbon_plots(p=result3$p.ll,
                      d_mean=d_mean,
                      d_sd=d_sd,
-                     M=100,
-                     title=paste("log linear - Sample:",100),
+                     M=M,
+                     title=paste("log linear - trials per condition:",100),
                      reference=0,
                      p_ref=result$p.t)
 

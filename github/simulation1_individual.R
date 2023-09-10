@@ -10,7 +10,7 @@ set.seed(117)
 source("signal_detection_theory_model.R")
 
 # Distributions to be used in the simulation
-d_mean <- seq(0.1,3.9,0.2)
+d_mean <- seq(0.1,3.9,0.3)
 c_mean <- 0
 d_sd <- 0
 c_sd <- 0
@@ -19,7 +19,7 @@ c_sd <- 0
 N <- c(40,200)
 
 # array and function to be used to create the pixel plot
-d_units <- c(-99,seq(-1,5,0.2),99)
+d_units <- c(-99,seq(-0.05,3.95,0.3),99)
 
 unit_prob <- function(d,d_units){
   prob <- rep(0,length(d_units)-1)
@@ -87,13 +87,13 @@ for(i in 1:length(N)){
   for(i in 1:(dim(prob_rep05)[1])){
     for(j in 2:(dim(prob_rep05)[2]-1)){
       col <- find_color(prob_rep05[i,j],grades,colors)
-      rect(d_mean[i]-0.1,d_units[j],d_mean[i]+0.1,d_units[j+1],col=col,border=NA)
+      rect(d_mean[i]-0.15,d_units[j],d_mean[i]+0.15,d_units[j+1],col=col,border=NA)
     }
   }
   axis(1)
   axis(2)
   abline(0,1)
-  title(main=paste0("Replacement: ",Ns,"+",Nn),xlab="True d'",ylab="Estimated d'")
+  title(main=paste0("Replacement: ",Ns," signal +",Nn," noise"),xlab="True d'",ylab="Estimated d'")
   
 # make Plot 2: true d' against estimated differences
   plot.new()
@@ -102,14 +102,14 @@ for(i in 1:length(N)){
   for(i in 1:(dim(prob_rep05)[1])){
     for(j in 2:(dim(prob_rep05)[2]-1)){
       col <- find_color(prob_rep05[i,j],grades,colors)
-      rect(d_mean[i]-0.1,d_units[j]-d_mean[i],
-           d_mean[i]+0.1,d_units[j+1]-d_mean[i],col=col,border=NA)
+      rect(d_mean[i]-0.15,d_units[j]-d_mean[i],
+           d_mean[i]+0.15,d_units[j+1]-d_mean[i],col=col,border=NA)
     }
   }
   axis(1)
   axis(2)
   abline(h=0)
-  title(main=paste0("Replacement: ",Ns,"+",Nn),xlab="True d'",
+  title(main=paste0("Replacement: ",Ns," signal +",Nn," noise"),xlab="True d'",
         ylab="Estimation-true difference")  
 
 }

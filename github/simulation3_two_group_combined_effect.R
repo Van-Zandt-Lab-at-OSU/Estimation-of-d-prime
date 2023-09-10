@@ -17,15 +17,15 @@ Nn1 <- 20
 Ns1 <- 20
 d_mean1 <- 2.5
 d_sd1 <- 0.8
-c_mean1 <- 0.4
+c_mean1 <- 0.35
 c_sd1 <- 0
 
 # G2
 M2 <- 60
 Nn2 <- 20
 Ns2 <- 20
-d_mean2 <- 2.5
-d_sd2 <- 0.5
+d_mean2 <- 3
+d_sd2 <- 0.8
 c_mean2 <- 0.2
 c_sd2 <- 0
 
